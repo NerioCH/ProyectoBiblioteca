@@ -1,12 +1,12 @@
 // ignore_for_file: prefer_const_constructors, unused_local_variable, unnecessary_null_comparison
 
-import 'package:controldegastos/aplication/use_cases/frmPrincipal.dart';
+import 'package:controldegastos/aplication/use_cases/forms/frmPrincipal.dart';
 import 'package:controldegastos/aplication/use_cases/login/login.dart';
-import 'package:controldegastos/aplication/use_cases/services/authService.dart';
-import 'package:controldegastos/aplication/use_cases/services/sharedPreferences.dart';
+import 'package:controldegastos/infraestructure/controllers/services/authService.dart';
 import 'package:controldegastos/domain/entities/authUser.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Rutas extends StatelessWidget {
   const Rutas({super.key});
@@ -20,6 +20,7 @@ class Rutas extends StatelessWidget {
         if (snapshot.connectionState == ConnectionState.active) {
           final UserAuth? user = snapshot.data;
           guardarEmail(user?.email);
+          print('USER: $user');
           return user == null ? login() : frmPrincipal();
         } else {
           return Scaffold(

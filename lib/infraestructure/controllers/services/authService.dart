@@ -30,6 +30,7 @@ class AuthService {
   }
 
   Future<void> cerrarSesion() async{
+    await _usuarioFirebase(null);
     return await _firebaseAuth.signOut();
   }
 }

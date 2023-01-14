@@ -1,10 +1,14 @@
 class usuario {
-  String _nombres = '', _apellidos = '';
-  String _fechaNacimiento = '', _genero = '';
+  String _nombres = '', _apellidos = '', _urlImage = '';
+  String _fechaNacimiento = '', _genero = '', _correo = '';
 
-  usuario(String nombres, String apellidos) {
+  usuario(String nombres, String apellidos, String fechaNacimiento, String genero, String correo, String urlImage) {
     _nombres = nombres;
     _apellidos = apellidos;
+    _fechaNacimiento = fechaNacimiento;
+    _genero = genero;
+    _correo = correo;
+    _urlImage =urlImage;
   }
 
   String get nombres {
@@ -37,5 +41,21 @@ class usuario {
 
   set genero(String genero) {
     _genero = genero;
+  }
+
+  String get correo {
+    return _correo;
+  }
+
+  set correo(String correo) {
+    _correo = correo;
+  }
+
+  String get urlImage {
+    return _urlImage;
+  }
+
+  set urlImage(String urlImage) {
+    _urlImage = urlImage;
   }
 }

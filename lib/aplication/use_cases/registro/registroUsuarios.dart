@@ -1,9 +1,13 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, camel_case_types
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, camel_case_types, avoid_print, prefer_interpolation_to_compose_strings
 
 import 'package:controldegastos/aplication/use_cases/login/login.dart';
-import 'package:controldegastos/aplication/use_cases/frmPrincipal.dart';
-import 'package:controldegastos/aplication/use_cases/services/authService.dart';
-import 'package:controldegastos/infraestructure/entitymanager/eUsuario.dart';
+import 'package:controldegastos/aplication/use_cases/forms/frmPrincipal.dart';
+import 'package:controldegastos/infraestructure/controllers/cCuenta.dart';
+import 'package:controldegastos/infraestructure/controllers/services/authService.dart';
+import 'package:controldegastos/domain/entities/usuario.dart';
+import 'package:controldegastos/infraestructure/controllers/cCategorias.dart';
+import 'package:controldegastos/infraestructure/controllers/cUsuarios.dart';
+import 'package:controldegastos/rutas.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -165,6 +169,8 @@ class _registrarUsuarioState extends State<registrarUsuario> {
                     validator: (value) {
                       if (value!.isEmpty) {
                         return 'Ingrese su contraseña';
+                      } else if(value.length < 6) {
+                        return 'Ingrese 6 digitos como minimo';
                       } else {
                         return null;
                       }
@@ -185,19 +191,16 @@ class _registrarUsuarioState extends State<registrarUsuario> {
                         await authService.registrarEmailPassword(emailcon.text.toString(), passwordcon.text.toString()).then((value) {
                           print("Ir a home");
                           print("Pantalla siguiente");
-                          var newUser = {
-                            'nombres': nombrescon.text,
-                            'apellidos': apellidoscon.text,
-                            'genero': genero,
-                            'fechaNacimiento': fNacimientocon.text,
-                            'correo': emailcon.text,
-                          };
-                          addUsuario(newUser).then((value) => {toastmessage('Datos guardados correctamente')});
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      frmPrincipal()));
+                          addUsuario(usuario(nombrescon.text, apellidoscon.text, fNacimientocon.text, genero.toString(), emailcon.text, '')).then((value) => {toastmessage('Datos guardados correctamente')});
+                          guardarEmail(emailcon.text);
+                          addCategoriasInicial(emailcon.text);
+                          addCuentaInicial(emailcon.text);
+                          Navigator.pop(context);
+                          // Navigator.push(
+                          //     context,
+                          //     MaterialPageRoute(
+                          //         builder: (context) =>
+                          //             frmPrincipal()));
                         }).catchError((error, stackTrace) {
                           print("error al registrar usuario: " + error.toString());
                           toastmessage(error.toString());
@@ -221,10 +224,7 @@ class _registrarUsuarioState extends State<registrarUsuario> {
                           ),
                           TextButton(
                               onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => login()));
+                                Navigator.pop(context);
                               },
                               child: Text("Inicia sesion")),
                         ],
