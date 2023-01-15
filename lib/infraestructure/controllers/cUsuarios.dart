@@ -31,7 +31,7 @@ Future<usuario> obtenerUsuario(String id) async {
   }
 // USUARIOS
 Future<void> addUsuario(usuario newUser) async {
-  await db.collection('usuarios').doc(newUser.correo).set({'nombres': newUser.nombres, 'apellidos': newUser.apellidos, 'fechaNacimiento': newUser.fechaNacimiento, 'genero': newUser.genero, 'correo': newUser.correo}).whenComplete(() => print("Agregado Correctamente")).catchError((err) => print("Error: " + err));
+  await db.collection('usuarios').doc(newUser.correo).set({'nombres': newUser.nombres, 'apellidos': newUser.apellidos, 'fechaNacimiento': newUser.fechaNacimiento, 'genero': newUser.genero, 'correo': newUser.correo, 'urlImage': newUser.urlImage}).whenComplete(() => print("Agregado Correctamente")).catchError((err) => print("Error: " + err));
 }
 
 Future<void> updateUsuario(String nombres, String apellidos, String id, String urlImage) async {
