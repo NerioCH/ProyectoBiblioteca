@@ -3,7 +3,7 @@
 import 'package:bibliotecaApp/aplication/use_cases/forms/frmModalCategorias.dart';
 import 'package:bibliotecaApp/aplication/use_cases/login/login.dart';
 import 'package:bibliotecaApp/domain/entities/transaccion.dart';
-import 'package:bibliotecaApp/infraestructure/controllers/cCuenta.dart';
+import 'package:bibliotecaApp/infraestructure/controllers/cAutor.dart';
 import 'package:bibliotecaApp/infraestructure/controllers/cTransaccion.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -21,32 +21,16 @@ class _frmTransaccionState extends State<frmTransaccion> {
   final transactionTypes = ['Ingreso', 'Gasto'];
   String transactionType = 'Ingreso';
   final _formkey = GlobalKey<FormState>();
-  String cuenta = 'Principal';  
+  String cuenta = 'Principal';
   final monto = TextEditingController();
   final descripcion = TextEditingController();
   final fecha = TextEditingController();
   final categoria = TextEditingController();
-  List<String> items = [   
+  List<String> items = [
     'Principal',
   ];
   String? email;
 
-    @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    Future.sync(() async {
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-      email = prefs.getString('email');
-      getListaCuentasNombres(email??'').then((value) => {
-        setState(() { items = value; })
-      });
-    }).then((_) {
-      setState(() {  });
-    }).catchError((err) => {
-      print('Error initState')
-    });
-  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,7 +38,7 @@ class _frmTransaccionState extends State<frmTransaccion> {
         title: Text('Agregar una transaccion'),
       ),
       body: Form(
-        key: _formkey ,
+        key: _formkey,
         child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(18.0),
@@ -71,19 +55,22 @@ class _frmTransaccionState extends State<frmTransaccion> {
                   activeFgColor: Colors.black,
                   inactiveBgColor: Colors.white,
                   inactiveFgColor: Colors.black,
-                  customTextStyles: const [TextStyle(fontWeight: FontWeight.bold)],
+                  customTextStyles: const [
+                    TextStyle(fontWeight: FontWeight.bold)
+                  ],
                   borderColor: const [Color.fromARGB(255, 217, 217, 217)],
-                  initialLabelIndex: transactionType == 'Ingreso'?0:1,
+                  initialLabelIndex: transactionType == 'Ingreso' ? 0 : 1,
                   totalSwitches: 2,
                   labels: transactionTypes,
                   radiusStyle: true,
                   onToggle: (index) {
-                    transactionType =
-                        index == 1 ? 'Gasto' : 'Ingreso';
+                    transactionType = index == 1 ? 'Gasto' : 'Ingreso';
                     categoria.clear();
                   },
                 ),
-                SizedBox(height: 20,),
+                SizedBox(
+                  height: 20,
+                ),
                 TextFormField(
                   keyboardType: TextInputType.number,
                   validator: (value) {
@@ -95,12 +82,16 @@ class _frmTransaccionState extends State<frmTransaccion> {
                   },
                   controller: monto,
                   decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    prefixIcon: Icon(Icons.monetization_on, color: Colors.green[400],),
-                    hintText: 'Monto'
-                  ),
+                      border: OutlineInputBorder(),
+                      prefixIcon: Icon(
+                        Icons.monetization_on,
+                        color: Colors.green[400],
+                      ),
+                      hintText: 'Monto'),
                 ),
-                SizedBox(height: 20,),
+                SizedBox(
+                  height: 20,
+                ),
                 TextFormField(
                   validator: (value) {
                     if (value!.isEmpty) {
@@ -112,30 +103,39 @@ class _frmTransaccionState extends State<frmTransaccion> {
                   readOnly: true,
                   controller: categoria,
                   decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    prefixIcon: Icon(Icons.category_rounded, color: Colors.blue,),
-                    hintText: 'Categoria'
-                  ),
-                  onTap: () async{
+                      border: OutlineInputBorder(),
+                      prefixIcon: Icon(
+                        Icons.category_rounded,
+                        color: Colors.blue,
+                      ),
+                      hintText: 'Categoria'),
+                  onTap: () async {
                     showModalBottomSheet(
-                      context: context,
-                      isDismissible: true,
-                      builder: (context) => frmModalCategorias(tipo: transactionType)).then((value) {
+                            context: context,
+                            isDismissible: true,
+                            builder: (context) =>
+                                frmModalCategorias(tipo: transactionType))
+                        .then((value) {
                       setState(() {
-                        categoria.text = value??'';
+                        categoria.text = value ?? '';
                       });
                     });
                   },
                 ),
-                SizedBox(height: 20,),
+                SizedBox(
+                  height: 20,
+                ),
                 DropdownButtonFormField<String>(
                   decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    prefixIcon: Icon(Icons.card_membership, color: Colors.blue,)
-                  ),
+                      border: OutlineInputBorder(),
+                      prefixIcon: Icon(
+                        Icons.card_membership,
+                        color: Colors.blue,
+                      )),
                   value: cuenta,
                   hint: Text('Cuenta'),
-                  validator: (value) => value == null ? 'Complete la cuenta' : null, 
+                  validator: (value) =>
+                      value == null ? 'Complete la cuenta' : null,
                   items: items.map((item) {
                     return DropdownMenuItem(
                       value: item,
@@ -148,7 +148,9 @@ class _frmTransaccionState extends State<frmTransaccion> {
                     });
                   },
                 ),
-                SizedBox(height: 20,),
+                SizedBox(
+                  height: 20,
+                ),
                 TextFormField(
                   validator: (value) {
                     if (value!.isEmpty) {
@@ -158,31 +160,37 @@ class _frmTransaccionState extends State<frmTransaccion> {
                     }
                   },
                   controller: fecha,
-                  decoration: InputDecoration( 
+                  decoration: InputDecoration(
                       border: OutlineInputBorder(),
-                      prefixIcon: Icon(Icons.calendar_month, color: Colors.blue,),
-                      hintText: 'Fecha'
-                  ),
-                  readOnly: true,  //set it true, so that user will not able to edit text
+                      prefixIcon: Icon(
+                        Icons.calendar_month,
+                        color: Colors.blue,
+                      ),
+                      hintText: 'Fecha'),
+                  readOnly:
+                      true, //set it true, so that user will not able to edit text
                   onTap: () async {
                     var pickedDate = await showDatePicker(
                         context: context,
                         initialDate: DateTime.now(),
-                        firstDate: DateTime(2022), //DateTime.now() - not to allow to choose before today.
-                        lastDate: DateTime(2100)
-                    );
+                        firstDate: DateTime(
+                            2022), //DateTime.now() - not to allow to choose before today.
+                        lastDate: DateTime(2100));
 
-                    if(pickedDate != null ){
-                        String formattedDate = DateFormat('dd-MM-yyyy').format(pickedDate); 
-                        setState(() {
-                           fecha.text = formattedDate;
-                        });
-                    }else{
-                        print("Fecha no seleccionada");
+                    if (pickedDate != null) {
+                      String formattedDate =
+                          DateFormat('dd-MM-yyyy').format(pickedDate);
+                      setState(() {
+                        fecha.text = formattedDate;
+                      });
+                    } else {
+                      print("Fecha no seleccionada");
                     }
                   },
                 ),
-                SizedBox(height: 20,),
+                SizedBox(
+                  height: 20,
+                ),
                 TextFormField(
                   validator: (value) {
                     if (value!.isEmpty) {
@@ -193,27 +201,38 @@ class _frmTransaccionState extends State<frmTransaccion> {
                   },
                   controller: descripcion,
                   decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    prefixIcon: Icon(Icons.message_outlined, color: Colors.blue,),
-                    hintText: 'Descripcion'
-                  ),
+                      border: OutlineInputBorder(),
+                      prefixIcon: Icon(
+                        Icons.message_outlined,
+                        color: Colors.blue,
+                      ),
+                      hintText: 'Descripcion'),
                 ),
-                SizedBox(height: 20,),
+                SizedBox(
+                  height: 20,
+                ),
                 ElevatedButton(
-                  onPressed: () async{
-                    if (_formkey.currentState!.validate()) {
-                      await guardarTransaccion(transaccion(email??'', cuenta, fecha.text, transactionType, descripcion.text, categoria.text, double.parse(monto.text))).then((value) => {
-                        toastmessage('Guardado Correctamente'),
-                        Navigator.of(context).pop(),
-                        _formkey.currentState!.reset(),
-                        setState(() {})
-                      }).catchError((err) => {
-                        toastmessage('Error al guardar')
-                      });
-                    }
-                  },
-                  child: Text('Guardar transaccion')
-                )
+                    onPressed: () async {
+                      if (_formkey.currentState!.validate()) {
+                        await guardarTransaccion(transaccion(
+                                email ?? '',
+                                cuenta,
+                                fecha.text,
+                                transactionType,
+                                descripcion.text,
+                                categoria.text,
+                                double.parse(monto.text)))
+                            .then((value) => {
+                                  toastmessage('Guardado Correctamente'),
+                                  Navigator.of(context).pop(),
+                                  _formkey.currentState!.reset(),
+                                  setState(() {})
+                                })
+                            .catchError(
+                                (err) => {toastmessage('Error al guardar')});
+                      }
+                    },
+                    child: Text('Guardar transaccion'))
               ],
             ),
           ),

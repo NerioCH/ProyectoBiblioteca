@@ -1,26 +1,22 @@
 // ignore_for_file: prefer_const_constructors, sort_child_properties_last
 
 import 'package:bibliotecaApp/aplication/use_cases/login/login.dart';
-import 'package:bibliotecaApp/domain/entities/categoria.dart';
-import 'package:bibliotecaApp/infraestructure/controllers/cCategorias.dart';
+import 'package:bibliotecaApp/domain/entities/distrito.dart';
+import 'package:bibliotecaApp/infraestructure/controllers/cDistritos.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class frmAddCategoria extends StatefulWidget {
-  const frmAddCategoria({super.key});
+class frmAddDistrito extends StatefulWidget {
+  const frmAddDistrito({super.key});
 
   @override
-  State<frmAddCategoria> createState() => _frmAddCategoriaState();
+  State<frmAddDistrito> createState() => _frmAddDistritoState();
 }
 
-class _frmAddCategoriaState extends State<frmAddCategoria> {
+class _frmAddDistritoState extends State<frmAddDistrito> {
   final _formkey = GlobalKey<FormState>();
   final nombre = TextEditingController();
-  var items = [
-    'Ingreso',
-    'Gasto',
-  ];
-  String? tipo;
+
   String? email;
   void initState() {
     super.initState();
@@ -34,7 +30,7 @@ class _frmAddCategoriaState extends State<frmAddCategoria> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Agregar categoria'),
+        title: Text('Agregar Distrito'),
         backgroundColor: Color.fromARGB(255, 47, 184, 166),
       ),
       body: Form(
@@ -51,7 +47,7 @@ class _frmAddCategoriaState extends State<frmAddCategoria> {
                       backgroundColor: Color(0xffE6E6E6),
                       radius: 30,
                       child: Icon(
-                        Icons.category,
+                        Icons.location_city,
                         color: Color.fromARGB(255, 45, 96, 117),
                         size: 50,
                       ),
@@ -94,7 +90,7 @@ class _frmAddCategoriaState extends State<frmAddCategoria> {
                   ElevatedButton(
                     onPressed: () {
                       if (_formkey.currentState!.validate()) {
-                        addCategoria(categoria(nombre.text))
+                        addDistrito(distrito(nombre.text))
                             .then((value) => {
                                   toastmessage('Agregado Correctamente'),
                                   Navigator.pop(context)
@@ -102,7 +98,7 @@ class _frmAddCategoriaState extends State<frmAddCategoria> {
                             .catchError((err) => {toastmessage('Error: $err')});
                       }
                     },
-                    child: Text('Guardar categoria'),
+                    child: Text('Guardar Distrito'),
                     style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30.0),

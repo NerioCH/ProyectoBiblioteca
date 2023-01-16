@@ -39,17 +39,17 @@ class _frmPrincipalState extends State<frmPrincipal> {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       email = prefs.getString('email');
       obtenerUsuario(email.toString()).then((user) => {
-        print('Usuario' + user.toString()),
-        setState(() {
-          currentUser = usuario(user.nombres, user.apellidos, user.dni, user.estado, user.correo, user.tipo, user.urlImage);
-        }),
-      });
+            print('Usuario' + user.toString()),
+            setState(() {
+              currentUser = usuario(user.nombres, user.apellidos, user.dni,
+                  user.estado, user.tipo, user.correo, user.urlImage);
+            }),
+          });
     }).then((_) {
-      setState(() {  });
-    }).catchError((err) => {
-      print('Error initState')
-    });
+      setState(() {});
+    }).catchError((err) => {print('Error initState')});
   }
+
   @override
   Widget build(BuildContext context) {
     final authService = Provider.of<AuthService>(context);
@@ -75,47 +75,55 @@ class _frmPrincipalState extends State<frmPrincipal> {
                       Row(
                         children: [
                           Padding(
-                        padding: const EdgeInsets.only(
-                          right: 20,
-                          left: 10,
-                          top: 10,
-                          bottom: 10
+                              padding: const EdgeInsets.only(
+                                  right: 20, left: 10, top: 10, bottom: 10),
+                              child: CircleAvatar(
+                                backgroundColor: Colors.white,
+                                child: Icon(
+                                  Icons.person,
+                                  color: Color.fromARGB(255, 47, 184, 166),
+                                ),
+                              )),
+                          Column(
+                            children: [
+                              Text(
+                                'Hola, ${currentUser?.nombres.toString() ?? ''}',
+                                style: TextStyle(
+                                    fontSize: 20, color: Colors.white),
+                              ),
+                              Text(
+                                'Bienvenido',
+                                style: TextStyle(
+                                    fontSize: 16, color: Colors.white),
+                              ),
+                            ],
                           ),
-                        child: CircleAvatar(
-                          backgroundColor: Colors.white,
-                          child: Icon(Icons.person, color: Color.fromARGB(255, 47, 184, 166),),
-                        )
-                      ),
-                      Column(children: [
-                        Text('Hola, ${currentUser?.nombres.toString() ?? ''}',
-                          style: TextStyle(fontSize: 20, color: Colors.white),
-                        ),
-                        Text('Bienvenido',
-                          style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.white),
-                        ),
-                      ],),
                         ],
                       ),
                       Padding(
                         padding: const EdgeInsets.only(right: 10),
                         child: IconButton(
-                          onPressed: () async {
-                            await authService.cerrarSesion();
-                            Navigator.of(context).pushAndRemoveUntil(
-                                MaterialPageRoute(builder: (BuildContext context) => Rutas()),
+                            onPressed: () async {
+                              await authService.cerrarSesion();
+                              Navigator.of(context).pushAndRemoveUntil(
+                                MaterialPageRoute(
+                                    builder: (BuildContext context) => Rutas()),
                                 (Route<dynamic> route) => false,
-                            );
-                          },
-                          icon: Icon(Icons.logout, color: Colors.white,)),
+                              );
+                            },
+                            icon: Icon(
+                              Icons.logout,
+                              color: Colors.white,
+                            )),
                       )
                     ],
                   ),
                 ),
               ),
             ),
-            currentUser?.tipo == 'Usuario'? frmListaLibros() : menuOpcionesAdmin()
+            currentUser?.tipo == 'Usuario'
+                ? frmListaLibros()
+                : menuOpcionesAdmin()
           ],
         ),
       ),
@@ -323,7 +331,8 @@ class _frmPrincipalState extends State<frmPrincipal> {
       //         }),
       //   )
       // ]),
-      bottomNavigationBar: currentUser?.tipo == 'Usuario'? Menuinferior() : MenuinferiorAdmin(),
+      bottomNavigationBar:
+          currentUser?.tipo == 'Usuario' ? Menuinferior() : MenuinferiorAdmin(),
       // floatingActionButton: FloatingActionButton(
       //   onPressed: () async{
       //     await Navigator.push(context,
@@ -334,9 +343,7 @@ class _frmPrincipalState extends State<frmPrincipal> {
       // ),
     );
   }
-  
 
-  
   void calcularBalance(snapshot) {
     totalGeneral = 0;
     totalIngresos = 0;
@@ -345,7 +352,8 @@ class _frmPrincipalState extends State<frmPrincipal> {
       setState(() {
         for (var i = 0; i < snapshot.data.length; i++) {
           if (snapshot.data![i]['tipo'].toString() == 'Ingreso') {
-            totalIngresos += double.parse(snapshot.data![i]['monto'].toString());
+            totalIngresos +=
+                double.parse(snapshot.data![i]['monto'].toString());
           } else {
             totalGastos += double.parse(snapshot.data![i]['monto'].toString());
           }
@@ -355,5 +363,3 @@ class _frmPrincipalState extends State<frmPrincipal> {
     });
   }
 }
-
-

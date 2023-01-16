@@ -34,7 +34,7 @@ class Rutas extends StatelessWidget {
   }
 }
 
-void guardarEmail(String? email) async{
+void guardarEmail(String? email) async {
   SharedPreferences pref = await SharedPreferences.getInstance();
-  pref.setString('email', email??'');
+  pref.setString('email', email ?? '');
 }
