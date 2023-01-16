@@ -41,7 +41,7 @@ class _frmPrincipalState extends State<frmPrincipal> {
       obtenerUsuario(email.toString()).then((user) => {
         print('Usuario' + user.toString()),
         setState(() {
-          currentUser = usuario(user.nombres, user.apellidos, user.dni, user.estado, user.correo, user.tipo, user.urlImage);
+          currentUser = usuario(user.nombres, user.apellidos, user.dni, user.estado, user.tipo, user.correo, user.urlImage);
         }),
       });
     }).then((_) {
@@ -90,7 +90,7 @@ class _frmPrincipalState extends State<frmPrincipal> {
                         Text('Hola, ${currentUser?.nombres.toString() ?? ''}',
                           style: TextStyle(fontSize: 20, color: Colors.white),
                         ),
-                        Text('Bienvenido',
+                        Text('Bienvenido, ${currentUser?.tipo.toString() ?? ''} ',
                           style: TextStyle(
                               fontSize: 16,
                               color: Colors.white),

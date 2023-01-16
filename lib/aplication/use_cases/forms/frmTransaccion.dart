@@ -21,11 +21,11 @@ class _frmTransaccionState extends State<frmTransaccion> {
   final transactionTypes = ['Ingreso', 'Gasto'];
   String transactionType = 'Ingreso';
   final _formkey = GlobalKey<FormState>();
-  String cuenta = 'Principal';  
   final monto = TextEditingController();
   final descripcion = TextEditingController();
   final fecha = TextEditingController();
   final categoria = TextEditingController();
+  String cuenta = 'Principal';  
   List<String> items = [   
     'Principal',
   ];

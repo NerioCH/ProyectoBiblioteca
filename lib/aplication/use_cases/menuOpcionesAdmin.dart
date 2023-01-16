@@ -2,6 +2,7 @@
 
 import 'package:bibliotecaApp/aplication/use_cases/forms/frmCategorias.dart';
 import 'package:bibliotecaApp/aplication/use_cases/forms/frmAutores.dart';
+import 'package:bibliotecaApp/aplication/use_cases/forms/frmLibros.dart';
 import 'package:flutter/material.dart';
 
 class menuOpcionesAdmin extends StatefulWidget {
@@ -29,7 +30,7 @@ class _menuOpcionesAdminState extends State<menuOpcionesAdmin> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              _cardItems(Icons.library_books, 'Libros', frmCategorias()),
+              _cardItems(Icons.library_books, 'Libros', frmLibros()),
               _cardItems(Icons.person, 'Usuario', frmCategorias()),              
             ],
           ),
