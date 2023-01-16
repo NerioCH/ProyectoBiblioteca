@@ -2,6 +2,7 @@
 
 import 'package:bibliotecaApp/aplication/use_cases/forms/frmCategorias.dart';
 import 'package:bibliotecaApp/aplication/use_cases/forms/frmAutores.dart';
+import 'package:bibliotecaApp/aplication/use_cases/forms/frmLibros.dart';
 import 'package:bibliotecaApp/aplication/use_cases/forms/frmUsuarios.dart';
 import 'package:bibliotecaApp/aplication/use_cases/forms/frmDistritos.dart';
 import 'package:flutter/material.dart';
@@ -33,8 +34,8 @@ class _menuOpcionesAdminState extends State<menuOpcionesAdmin> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              _cardItems(Icons.library_books, 'Libros', frmCategorias()),
-              _cardItems(Icons.person, 'Usuarios', frmUsuarios()),
+              _cardItems(Icons.library_books, 'Libros', frmLibros()),
+              _cardItems(Icons.person, 'Usuario', frmUsuarios()),              
             ],
           ),
           SizedBox(

@@ -38,6 +38,9 @@ class _MyAppState extends State<MyApp> {
         debugShowCheckedModeBanner: false,
         // home: Rutas(),
         initialRoute: '/',
+        theme: ThemeData(
+          primarySwatch: Colors.blueGrey,
+        ),
         routes: {
           '/': (context) => const Rutas(),
           '/home': (context) => const frmPrincipal(),

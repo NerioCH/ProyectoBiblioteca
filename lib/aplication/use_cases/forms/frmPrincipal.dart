@@ -39,12 +39,11 @@ class _frmPrincipalState extends State<frmPrincipal> {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       email = prefs.getString('email');
       obtenerUsuario(email.toString()).then((user) => {
-            print('Usuario' + user.toString()),
-            setState(() {
-              currentUser = usuario(user.nombres, user.apellidos, user.dni,
-                  user.estado, user.tipo, user.correo, user.urlImage);
-            }),
-          });
+        print('Usuario' + user.toString()),
+        setState(() {
+          currentUser = usuario(user.nombres, user.apellidos, user.dni, user.estado, user.tipo, user.correo, user.urlImage);
+        }),
+      });
     }).then((_) {
       setState(() {});
     }).catchError((err) => {print('Error initState')});

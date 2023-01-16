@@ -92,6 +92,7 @@ class _perfilPageState extends State<perfilPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Perfil'),
+        backgroundColor: Color.fromARGB(255, 47, 184, 166),
       ),
       body: Form(
         key: _formkey,
@@ -147,7 +148,7 @@ class _perfilPageState extends State<perfilPage> {
                         value: 'camara',
                         child: Row(
                           children: [
-                            Icon(Icons.photo_camera, color: Colors.blue,),
+                            Icon(Icons.photo_camera, color: Color.fromARGB(255, 47, 184, 166),),
                             SizedBox(width: 5),
                             Text('Camara'),
                           ],
@@ -157,7 +158,7 @@ class _perfilPageState extends State<perfilPage> {
                         value: 'galeria',
                         child: Row(
                           children: [
-                            Icon(Icons.image, color: Colors.blue,),
+                            Icon(Icons.image, color: Color.fromARGB(255, 47, 184, 166),),
                             SizedBox(width: 5),
                             Text('Galeria'),
                           ],
@@ -181,7 +182,7 @@ class _perfilPageState extends State<perfilPage> {
                   decoration: InputDecoration(
                       hintText: 'Nombres',
                       labelText: 'Nombres',
-                      suffix: Icon(Icons.person, color: Colors.blue),
+                      suffix: Icon(Icons.person, color: Color.fromARGB(255, 47, 184, 166)),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(15.0))),
                 ),
@@ -200,7 +201,7 @@ class _perfilPageState extends State<perfilPage> {
                   decoration: InputDecoration(
                       hintText: 'Apellidos',
                       labelText: 'Apellidos',
-                      suffix: Icon(Icons.people, color: Colors.blue),
+                      suffix: Icon(Icons.people, color: Color.fromARGB(255, 47, 184, 166)),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(15.0))),
                 ),
@@ -220,7 +221,7 @@ class _perfilPageState extends State<perfilPage> {
                   decoration: InputDecoration(
                       hintText: 'Correo',
                       labelText: 'Correo',
-                      suffix: Icon(Icons.email, color: Colors.blue),
+                      suffix: Icon(Icons.email, color: Color.fromARGB(255, 47, 184, 166)),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(15.0))),
                 ),
@@ -240,7 +241,7 @@ class _perfilPageState extends State<perfilPage> {
                   decoration: InputDecoration(
                       hintText: 'DNI',
                       labelText: 'DNI',
-                      suffix: Icon(Icons.credit_card, color: Colors.blue),
+                      suffix: Icon(Icons.credit_card, color: Color.fromARGB(255, 47, 184, 166)),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(15.0))),
                 ),
@@ -260,7 +261,7 @@ class _perfilPageState extends State<perfilPage> {
                   decoration: InputDecoration(
                       hintText: 'Estado',
                       labelText: 'Estado',
-                      suffix: Icon(Icons.man_2, color: Colors.blue),
+                      suffix: Icon(Icons.adjust, color: Color.fromARGB(255, 47, 184, 166)),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(15.0))),
                 ),
@@ -280,7 +281,7 @@ class _perfilPageState extends State<perfilPage> {
                   decoration: InputDecoration(
                       hintText: 'Tipo de usuario',
                       labelText: 'Tipo de usuario',
-                      suffix: Icon(Icons.calendar_month, color: Colors.blue),
+                      suffix: Icon(Icons.person_4, color: Color.fromARGB(255, 47, 184, 166)),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(15.0))),
                 ),
@@ -319,7 +320,14 @@ class _perfilPageState extends State<perfilPage> {
                       toastmessage('Actualizado correctamente')
                     }).catchError((err) => print('No se pudo actualizar, error: $err'));
                   },
-                  child: Text('Actualizar datos')
+                  child: Text('Actualizar datos'),
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30.0),
+                    ),
+                    primary: Color.fromARGB(255, 47, 184, 166),
+                    minimumSize: Size(50, 50)
+                  ),
                 ),
               ],
             ),
