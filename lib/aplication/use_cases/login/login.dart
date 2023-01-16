@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, camel_case_types, unused_local_variable
+// ignore_for_file: prefer_const_constructors, camel_case_types, unused_local_variable, avoid_print
 
 import 'package:bibliotecaApp/aplication/use_cases/forms/frmPrincipal.dart';
 import 'package:bibliotecaApp/aplication/use_cases/login/olvidePassword.dart';
@@ -31,7 +31,7 @@ class _loginState extends State<login> {
           Container(
             height: MediaQuery.of(context).size.height * 0.7,
             decoration: BoxDecoration(
-                color: Colors.indigo,
+                color: Color.fromARGB(255, 47, 184, 166),
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(0),
                   bottomRight: Radius.circular(0),
@@ -79,9 +79,7 @@ class _loginState extends State<login> {
                                   BorderRadius.circular(100), // Image border
                               child: SizedBox.fromSize(
                                 size: Size.fromRadius(60), // Image radius
-                                child: Image.network(
-                                    'https://cdn-icons-png.flaticon.com/512/201/201571.png',
-                                    fit: BoxFit.cover),
+                                child: Image.asset('assets/icon.png')
                               ),
                             ),
                             SizedBox(
@@ -117,7 +115,7 @@ class _loginState extends State<login> {
                                         fillColor: Colors.white,
                                         hintText: 'Correo',
                                         labelText: 'Correo',
-                                        suffix: Icon(Icons.email, color: Colors.indigo),
+                                        suffix: Icon(Icons.email, color: Color.fromARGB(255, 45, 96, 117),),
                                         border: OutlineInputBorder(
                                             borderRadius: BorderRadius.circular(15.0))),
                                   ),
@@ -141,7 +139,7 @@ class _loginState extends State<login> {
                                         fillColor: Colors.white,
                                         hintText: 'Contraseña',
                                         labelText: 'Contraseña',
-                                        suffix: Icon(Icons.key, color: Colors.indigo),
+                                        suffix: Icon(Icons.key, color: Color.fromARGB(255, 45, 96, 117),),
                                         border: OutlineInputBorder(
                                             borderRadius: BorderRadius.circular(15.0))),
                                   ),
@@ -166,21 +164,29 @@ class _loginState extends State<login> {
                               ],
                             ),
                             ElevatedButton(
-                                child: Text("Iniciar sesion"),
-                                onPressed: () {
-                                  if (_formkey.currentState!.validate()) {
-                                    authService
-                                        .loginEmailPassword(
-                                            emailcon.text.toString(),
-                                            passwordcon.text.toString())
-                                        .then((value) {
-                                      toastmessage('Inicio de sesion correcto');
-                                    }).catchError((error, stackTrace) {
-                                      print("error: " + error.toString());
-                                      toastmessage('Datos incorrectos');
-                                    });
-                                  }
-                                }),
+                              child: Text("Iniciar sesion"),
+                              onPressed: () {
+                                if (_formkey.currentState!.validate()) {
+                                  authService
+                                      .loginEmailPassword(
+                                          emailcon.text.toString(),
+                                          passwordcon.text.toString())
+                                      .then((value) {
+                                    toastmessage('Inicio de sesion correcto');
+                                  }).catchError((error, stackTrace) {
+                                    print("error: " + error.toString());
+                                    toastmessage('Datos incorrectos');
+                                  });
+                                }
+                              },
+                              style: ElevatedButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20.0),
+                                ),
+                                primary: Color.fromARGB(255, 45, 96, 117),
+                                minimumSize: Size(50, 50)
+                              ),
+                            ),
                             SizedBox(
                               height: 10,
                             ),

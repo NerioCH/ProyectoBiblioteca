@@ -29,6 +29,19 @@ Future<List> getCategoriasTodos() async {
   return listaCategorias;
 }
 
+Future<List<String>> getListaCategoriasNombres() async {
+  List<String> lista = [];
+  CollectionReference collectionReference = db.collection('categorias');
+  QuerySnapshot querySnapshot = await collectionReference.get();
+  querySnapshot.docs.forEach((element) {
+    Map l = element.data() as Map;
+    // var nombres = l['nombres'] + ' ' + l['apellidos'];
+    lista.add(l['nombre']);
+  });
+  Future.delayed(const Duration(seconds: 5));
+  return lista;
+}
+
 Future<void> addCategoria(categoria newCategoria) async {
   await db.collection('categorias').add({'nombre': newCategoria.nombre}).whenComplete(() => print("Agregado Correctamente")).catchError((err) => print("Error: " + err));
 }

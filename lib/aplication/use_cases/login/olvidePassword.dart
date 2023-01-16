@@ -18,7 +18,7 @@ class _olvidePasswordState extends State<olvidePassword> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Reestablecer contraseña"),
-        backgroundColor: Colors.blue,
+        backgroundColor: Color.fromARGB(255, 47, 184, 166),
       ),
       body: Column(children: [
         SizedBox(

@@ -1,6 +1,8 @@
 import 'package:bibliotecaApp/aplication/use_cases/login/login.dart';
 import 'package:bibliotecaApp/domain/entities/libro.dart';
 import 'package:bibliotecaApp/domain/entities/prestamo.dart';
+import 'package:bibliotecaApp/infraestructure/controllers/cAutor.dart';
+import 'package:bibliotecaApp/infraestructure/controllers/cCategorias.dart';
 import 'package:bibliotecaApp/infraestructure/controllers/cLibro.dart';
 import 'package:bibliotecaApp/infraestructure/controllers/cPrestamo.dart';
 import 'package:flutter/material.dart';
@@ -20,11 +22,11 @@ class _frmAddLibroState extends State<frmAddLibro> {
   final nombre = TextEditingController();
   final isbn = TextEditingController();
   final numCopias = TextEditingController();
-  String autor = 'Autor';  
+  String? autor;  
   List<String> itemsAutor = [   
     'Autor',
   ];
-  String categoria = 'Categoria';  
+  String? categoria;  
   List<String> itemsCategoria = [   
     'Categoria',
   ];
@@ -35,6 +37,18 @@ class _frmAddLibroState extends State<frmAddLibro> {
     Future.sync(() async {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       email = prefs.getString('email');
+      await getListaAutoresNombres().then((value) => {
+        print(value),
+        setState(() { itemsAutor = value; })
+      });
+      await getListaCategoriasNombres().then((value) => {
+        print(value),
+        setState(() { itemsCategoria = value; })
+      });
+    }).then((_) {
+      setState(() {  });
+    }).catchError((err) => {
+      print('Error initState')
     });
   }
   @override
@@ -161,7 +175,7 @@ class _frmAddLibroState extends State<frmAddLibro> {
               ElevatedButton(
                 onPressed: () {
                   if (_formkey.currentState!.validate()) {
-                    addLibro(libro(nombre.text, autor, categoria, isbn.text, int.parse(numCopias.text), '')).then((value) => {
+                    addLibro(libro(nombre.text, autor??'Sin Autor', categoria??'Sin categoria', isbn.text, int.parse(numCopias.text), '')).then((value) => {
                       toastmessage('Guardado correctamente'),
                       Navigator.pop(context)
                     }).catchError((err) => print('Error: $err'));

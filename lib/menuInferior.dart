@@ -1,5 +1,8 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables
 
+import 'package:bibliotecaApp/aplication/use_cases/forms/frmPrestamos.dart';
+import 'package:bibliotecaApp/aplication/use_cases/forms/frmPrincipal.dart';
+import 'package:bibliotecaApp/aplication/use_cases/forms/perfilPage.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -19,7 +22,7 @@ class _MenuinferiorState extends State<Menuinferior> {
       padding: const EdgeInsets.symmetric(horizontal: 30),
       // margin: const EdgeInsets.only(top: 8, right: 5, left: 5),
       decoration: const BoxDecoration(
-        color: Colors.indigo,
+        color: Color.fromARGB(255, 45, 96, 117),
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(20),
           topRight: Radius.circular(20),
@@ -30,7 +33,8 @@ class _MenuinferiorState extends State<Menuinferior> {
         children: [
           InkWell(
             onTap: () {
-              // Navigator.pushReplacement(context, 'home');
+              Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => frmPrincipal()));
             },
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -46,7 +50,8 @@ class _MenuinferiorState extends State<Menuinferior> {
           ),
           InkWell(
             onTap: () {
-              // Navigator.pushReplacement(context, 'home');
+              Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => frmPrestamos()));
             },
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -62,7 +67,8 @@ class _MenuinferiorState extends State<Menuinferior> {
           ),
           InkWell(
             onTap: () {
-              // Navigator.pushReplacement(context, 'home');
+              Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => perfilPage()));
             },
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,

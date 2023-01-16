@@ -19,6 +19,19 @@ Future<List> getListadistritos() async {
   return lista;
 }
 
+Future<List<String>> getListaDistritosNombres() async {
+  List<String> lista = [];
+  CollectionReference collectionReference = db.collection('distritos');
+  QuerySnapshot querySnapshot = await collectionReference.get();
+  querySnapshot.docs.forEach((element) {
+    Map l = element.data() as Map;
+    // var nombres = l['nombres'] + ' ' + l['apellidos'];
+    lista.add(l['nombre']);
+  });
+  Future.delayed(const Duration(seconds: 5));
+  return lista;
+}
+
 Future<void> addDistrito(distrito newdistrito) async {
   await db
       .collection('distritos')

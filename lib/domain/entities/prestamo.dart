@@ -1,13 +1,24 @@
 class prestamo {
-  String _codUsuario = '', _titulo = '', _detalles = '', _fechaLimite = '';
-  double _monto = 0;
+  String _codUsuario = '', _codLibro = '', _distrito = '', _fechaSolicitud = '', _fechaPrestamo = '', _fechaDevolucion = '', _estado = '';
+  double _multa = 0;
 
-  prestamo(String codUsuario, String titulo, String detalles, String fechaLimite, double monto) {
+  prestamo(
+    String codUsuario,
+    String codLibro,
+    String distrito,
+    String fechaSolicitud,
+    String fechaPrestamo,
+    String fechaDevolucion,
+    String estado,
+    double multa) {
     _codUsuario = codUsuario;
-    _titulo = titulo;
-    _detalles =  detalles;
-    _fechaLimite = fechaLimite;
-    _monto = monto;
+    _codLibro = codLibro;
+    _distrito =  distrito;
+    _fechaSolicitud = fechaSolicitud;
+    _fechaPrestamo = fechaPrestamo;
+    _fechaDevolucion = fechaDevolucion;
+    _estado = estado;
+    _multa = multa;
   }
 
   String get codUsuario {
@@ -18,33 +29,56 @@ class prestamo {
     _codUsuario = codUsuario;
   }
 
-  String get titulo {
-    return _titulo;
+  String get codLibro {
+    return _codLibro;
   }
 
-  set titulo(String titulo) {
-    _titulo = titulo;
+  set codLibro(String codLibro) {
+    _codLibro = codLibro;
   }
-  String get detalles {
-    return _detalles;
-  }
-
-  set detalles(String detalles) {
-    _detalles = detalles;
-  }
-  String get fechaLimite {
-    return _fechaLimite;
+  String get distrito {
+    return _distrito;
   }
 
-  set fechaLimite(String fechaLimite) {
-    _fechaLimite = fechaLimite;
+  set distrito(String distrito) {
+    _distrito = distrito;
   }
 
-  double get monto {
-    return _monto;
+  String get fechaSolicitud {
+    return _fechaSolicitud;
   }
 
-  set monto(double monto) {
-    _monto = monto;
+  set fechaSolicitud(String fechaSolicitud) {
+    _fechaSolicitud = fechaSolicitud;
+  }
+  String get fechaPrestamo {
+    return _fechaPrestamo;
+  }
+
+  set fechaPrestamo(String fechaPrestamo) {
+    _fechaPrestamo = fechaPrestamo;
+  }
+  String get fechaDevolucion{
+    return _fechaDevolucion;
+  }
+
+  set fechaDevolucion(String fechaDevolucion) {
+    _fechaDevolucion= fechaDevolucion;
+  }
+  String get estado {
+    return _estado;
+  }
+
+  set estado(String estado) {
+    _estado = estado;
+  }
+
+
+  double get multa {
+    return _multa;
+  }
+
+  set multa(double multa) {
+    _multa = multa;
   }
 }

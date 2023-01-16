@@ -48,6 +48,7 @@ class _registrarUsuarioState extends State<registrarUsuario> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Registro de usuarios'),
+        backgroundColor: Color.fromARGB(255, 47, 184, 166),
       ),
       body: Form(
         key: _formkey,
@@ -69,7 +70,7 @@ class _registrarUsuarioState extends State<registrarUsuario> {
                       border: OutlineInputBorder(),
                       prefixIcon: Icon(
                         Icons.person,
-                        color: Colors.indigo,
+                        color: Color.fromARGB(255, 45, 96, 117),
                       ),
                       hintText: 'Nombres'),
                 ),
@@ -89,7 +90,7 @@ class _registrarUsuarioState extends State<registrarUsuario> {
                       border: OutlineInputBorder(),
                       prefixIcon: Icon(
                         Icons.people,
-                        color: Colors.indigo,
+                        color: Color.fromARGB(255, 45, 96, 117),
                       ),
                       hintText: 'Apellidos'),
                 ),
@@ -110,7 +111,7 @@ class _registrarUsuarioState extends State<registrarUsuario> {
                       border: OutlineInputBorder(),
                       prefixIcon: Icon(
                         Icons.credit_card,
-                        color: Colors.indigo,
+                        color: Color.fromARGB(255, 45, 96, 117),
                       ),
                       hintText: 'DNI'),
                 ),
@@ -130,7 +131,7 @@ class _registrarUsuarioState extends State<registrarUsuario> {
                       border: OutlineInputBorder(),
                       prefixIcon: Icon(
                         Icons.emoji_people,
-                        color: Colors.indigo,
+                        color: Color.fromARGB(255, 45, 96, 117),
                       ),
                       hintText: 'Estado'),
                 ),
@@ -142,7 +143,7 @@ class _registrarUsuarioState extends State<registrarUsuario> {
                       border: OutlineInputBorder(),
                       prefixIcon: Icon(
                         Icons.person_pin,
-                        color: Colors.indigo,
+                        color: Color.fromARGB(255, 45, 96, 117),
                       )),
                   value: estado,
                   hint: Text('Tipo de usuario'),
@@ -178,7 +179,7 @@ class _registrarUsuarioState extends State<registrarUsuario> {
                       border: OutlineInputBorder(),
                       prefixIcon: Icon(
                         Icons.email,
-                        color: Colors.indigo,
+                        color: Color.fromARGB(255, 45, 96, 117),
                       ),
                       hintText: 'Correo'),
                 ),
@@ -202,7 +203,7 @@ class _registrarUsuarioState extends State<registrarUsuario> {
                       border: OutlineInputBorder(),
                       prefixIcon: Icon(
                         Icons.key,
-                        color: Colors.indigo,
+                        color: Color.fromARGB(255, 45, 96, 117),
                       ),
                       hintText: 'Password'),
                 ),
@@ -244,7 +245,15 @@ class _registrarUsuarioState extends State<registrarUsuario> {
                         });
                       }
                     },
-                    child: Text('Registrar')),
+                    child: Text('Registrar'),
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                      primary: Color.fromARGB(255, 45, 96, 117),
+                      minimumSize: Size(50, 50)
+                    ),
+                    ),
                 Padding(
                   padding: const EdgeInsets.all(30),
                   child: Align(

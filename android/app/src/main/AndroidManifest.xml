@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.bibliotecaApp">
    <application
-        android:label="Biblioteca App"
+        android:label="AppBiblio"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity

@@ -17,6 +17,19 @@ Future<List> getListaAutores() async {
   return lista;
 }
 
+Future<List<String>> getListaAutoresNombres() async {
+  List<String> lista = [];
+  CollectionReference collectionReference = db.collection('autores');
+  QuerySnapshot querySnapshot = await collectionReference.get();
+  querySnapshot.docs.forEach((element) {
+    Map l = element.data() as Map;
+    // var nombres = l['nombres'] + ' ' + l['apellidos'];
+    lista.add(l['nombres']);
+  });
+  Future.delayed(const Duration(seconds: 5));
+  return lista;
+}
+
 Future<void> addautor(autor newautor) async {
   await db
       .collection('autores')
