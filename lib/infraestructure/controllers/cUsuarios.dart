@@ -20,7 +20,10 @@ Future<List> getListaUsuarios() async {
 //Letura de datos
   List lista = [];
   CollectionReference collectionReference = db.collection('usuarios');
-  QuerySnapshot querySnapshot = await collectionReference.get();
+
+  QuerySnapshot querySnapshot = await collectionReference
+      .orderBy('nombres', descending: false)
+      .get(); //ordenar alfabeticamente el orden de las listas
   querySnapshot.docs.forEach((element) {
     lista.add(element.data());
   });

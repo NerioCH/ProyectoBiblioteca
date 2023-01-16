@@ -1,5 +1,4 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
 import 'package:bibliotecaApp/aplication/use_cases/forms/frmAddAutor.dart';
 import 'package:bibliotecaApp/aplication/use_cases/registro/registroUsuarios.dart';
 import 'package:bibliotecaApp/mainDrawer.dart';
@@ -50,10 +49,27 @@ class _frmUsuariosState extends State<frmUsuarios> {
                           itemBuilder: ((context, index) {
                             return Card(
                               child: ListTile(
-                                leading: Icon(
-                                  Icons.person_2,
-                                  color: Color.fromARGB(255, 47, 184, 166),
-                                ),
+                                leading: Container(
+                                    width: 40,
+                                    height: 40,
+                                    decoration: new BoxDecoration(
+                                      color: Color.fromARGB(255, 47, 184, 166),
+                                      shape: BoxShape.circle,
+                                    ),
+                                    child: Center(
+                                      child: Text(
+                                        snapshot.data?[index]['nombres']
+                                                .substring(0, 1) +
+                                            snapshot.data?[index]['apellidos']
+                                                .substring(0, 1),
+                                        style: TextStyle(
+                                            color: Color.fromARGB(
+                                                255, 255, 255, 255)),
+                                      ),
+                                    )
+
+                                    // color: Color.fromARGB(255, 47, 184, 166),
+                                    ),
                                 title: Text(
                                   '${snapshot.data?[index]['nombres']} ${snapshot.data?[index]['apellidos']}',
                                   style: TextStyle(fontWeight: FontWeight.bold),
