@@ -1,9 +1,9 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, avoid_print, invalid_return_type_for_catch_error, prefer_interpolation_to_compose_strings
 
-import 'package:controldegastos/aplication/use_cases/login/login.dart';
-import 'package:controldegastos/domain/entities/usuario.dart';
-import 'package:controldegastos/infraestructure/controllers/cUsuarios.dart';
-import 'package:controldegastos/mainDrawer.dart';
+import 'package:bibliotecaApp/aplication/use_cases/login/login.dart';
+import 'package:bibliotecaApp/domain/entities/usuario.dart';
+import 'package:bibliotecaApp/infraestructure/controllers/cUsuarios.dart';
+import 'package:bibliotecaApp/mainDrawer.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -57,8 +57,9 @@ class _perfilPageState extends State<perfilPage> {
   final nombres = TextEditingController();
   final apellidos = TextEditingController();
   final correo = TextEditingController();
-  final fechaNacimiento = TextEditingController();
-  final genero = TextEditingController();
+  final dni = TextEditingController();
+  final estado = TextEditingController();
+  final tipo = TextEditingController();
   usuario? currentUser;
   String? email;
   @override
@@ -70,11 +71,12 @@ class _perfilPageState extends State<perfilPage> {
       obtenerUsuario(email.toString()).then((user) => {
         print('Usuario' + user.toString()),
         setState(() {
-          currentUser = usuario(user.nombres, user.apellidos, user.fechaNacimiento, user.genero, user.correo, user.urlImage);
+          currentUser = usuario(user.nombres, user.apellidos, user.dni, user.estado, user.correo, user.tipo, user.urlImage);
           nombres.text = user.nombres;
           apellidos.text = user.apellidos;
-          fechaNacimiento.text = user.fechaNacimiento;
-          genero.text = user.genero;
+          dni.text = user.dni;
+          estado.text = user.estado;
+          tipo.text = user.tipo;
           correo.text = user.correo;
           userImage = user.urlImage;
         }),
@@ -88,7 +90,6 @@ class _perfilPageState extends State<perfilPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Drawer(child: MainDrawer()),
       appBar: AppBar(
         title: Text('Perfil'),
       ),
@@ -227,18 +228,38 @@ class _perfilPageState extends State<perfilPage> {
                 TextFormField(
                   validator: (value) {
                     if (value!.isEmpty) {
-                      return 'Ingrese su genero';
+                      return 'Ingrese su DNI';
                     } else {
                       return null;
                     }
                   },
                   readOnly: true,
                   keyboardType: TextInputType.text,
-                  controller: genero,
+                  controller: dni,
                   enableInteractiveSelection: false,
                   decoration: InputDecoration(
-                      hintText: 'Genero',
-                      labelText: 'Genero',
+                      hintText: 'DNI',
+                      labelText: 'DNI',
+                      suffix: Icon(Icons.credit_card, color: Colors.blue),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15.0))),
+                ),
+                SizedBox(height: 20,),
+                TextFormField(
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Ingrese su estado';
+                    } else {
+                      return null;
+                    }
+                  },
+                  readOnly: true,
+                  keyboardType: TextInputType.text,
+                  controller: estado,
+                  enableInteractiveSelection: false,
+                  decoration: InputDecoration(
+                      hintText: 'Estado',
+                      labelText: 'Estado',
                       suffix: Icon(Icons.man_2, color: Colors.blue),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(15.0))),
@@ -247,18 +268,18 @@ class _perfilPageState extends State<perfilPage> {
                 TextFormField(
                   validator: (value) {
                     if (value!.isEmpty) {
-                      return 'Ingrese su fecha de nacimiento';
+                      return 'Ingrese su tipo';
                     } else {
                       return null;
                     }
                   },
                   readOnly: true,
                   keyboardType: TextInputType.text,
-                  controller: fechaNacimiento,
+                  controller: tipo,
                   enableInteractiveSelection: false,
                   decoration: InputDecoration(
-                      hintText: 'Fecha de nacimiento',
-                      labelText: 'Fecha de nacimiento',
+                      hintText: 'Tipo de usuario',
+                      labelText: 'Tipo de usuario',
                       suffix: Icon(Icons.calendar_month, color: Colors.blue),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(15.0))),

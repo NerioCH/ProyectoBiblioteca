@@ -1,77 +1,34 @@
 {
   "project_info": {
-    "project_number": "704220234860",
-    "project_id": "controldegastosperu",
-    "storage_bucket": "controldegastosperu.appspot.com"
+    "project_number": "546463673476",
+    "project_id": "appbibliotecaa",
+    "storage_bucket": "appbibliotecaa.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:704220234860:android:61d41889034661a05a4449",
+        "mobilesdk_app_id": "1:546463673476:android:6a76a70de44c323ebd66d1",
         "android_client_info": {
-          "package_name": "com.controlgastos.controldegastos"
+          "package_name": "com.bibliotecaApp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "704220234860-7d2udu5oiqoh1rnjp7dg3k7q4d3ecdah.apps.googleusercontent.com",
+          "client_id": "546463673476-k470rq018b41222li7gi03b99v1q03ap.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyB7uL1SMfhXn-ljL1RC_Bbwyuqm_jyjehU"
+          "current_key": "AIzaSyAFfioe1lCP-32A1xBbJrUHFFDnQnXuYls"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "704220234860-7d2udu5oiqoh1rnjp7dg3k7q4d3ecdah.apps.googleusercontent.com",
+              "client_id": "546463673476-k470rq018b41222li7gi03b99v1q03ap.apps.googleusercontent.com",
               "client_type": 3
-            },
-            {
-              "client_id": "704220234860-c9agoq2vds78h16cefv060molmdu923d.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.ejercicio1s4.ejercicio1s4"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:704220234860:android:ff3022bfbd27d2275a4449",
-        "android_client_info": {
-          "package_name": "com.ejercicio1s4.ejercicio1s4"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "704220234860-7d2udu5oiqoh1rnjp7dg3k7q4d3ecdah.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyB7uL1SMfhXn-ljL1RC_Bbwyuqm_jyjehU"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "704220234860-7d2udu5oiqoh1rnjp7dg3k7q4d3ecdah.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "704220234860-c9agoq2vds78h16cefv060molmdu923d.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.ejercicio1s4.ejercicio1s4"
-              }
             }
           ]
         }

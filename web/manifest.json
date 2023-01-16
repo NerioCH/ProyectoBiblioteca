@@ -1,6 +1,6 @@
 {
-    "name": "controldegastos",
-    "short_name": "controldegastos",
+    "name": "bibliotecaApp",
+    "short_name": "bibliotecaApp",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#hexcode",

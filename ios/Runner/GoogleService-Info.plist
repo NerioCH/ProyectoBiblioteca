@@ -13,11 +13,11 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.controlgastos.controldegastos</string>
+	<string>com.controlgastos.bibliotecaApp</string>
 	<key>PROJECT_ID</key>
-	<string>controldegastosperu</string>
+	<string>bibliotecaAppperu</string>
 	<key>STORAGE_BUCKET</key>
-	<string>controldegastosperu.appspot.com</string>
+	<string>bibliotecaAppperu.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>

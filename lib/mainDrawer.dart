@@ -1,15 +1,15 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:controldegastos/aplication/use_cases/forms/frmCategorias.dart';
-import 'package:controldegastos/aplication/use_cases/forms/frmCuentas.dart';
-import 'package:controldegastos/aplication/use_cases/forms/frmDeudas.dart';
-import 'package:controldegastos/aplication/use_cases/forms/frmPrestamos.dart';
-import 'package:controldegastos/aplication/use_cases/forms/frmPrincipal.dart';
-import 'package:controldegastos/aplication/use_cases/forms/perfilPage.dart';
-import 'package:controldegastos/infraestructure/controllers/services/authService.dart';
-import 'package:controldegastos/domain/entities/usuario.dart';
-import 'package:controldegastos/infraestructure/controllers/cUsuarios.dart';
-import 'package:controldegastos/rutas.dart';
+import 'package:bibliotecaApp/aplication/use_cases/forms/frmCategorias.dart';
+import 'package:bibliotecaApp/aplication/use_cases/forms/frmAutores.dart';
+import 'package:bibliotecaApp/aplication/use_cases/forms/frmDeudas.dart';
+import 'package:bibliotecaApp/aplication/use_cases/forms/frmPrestamos.dart';
+import 'package:bibliotecaApp/aplication/use_cases/forms/frmPrincipal.dart';
+import 'package:bibliotecaApp/aplication/use_cases/forms/perfilPage.dart';
+import 'package:bibliotecaApp/infraestructure/controllers/services/authService.dart';
+import 'package:bibliotecaApp/domain/entities/usuario.dart';
+import 'package:bibliotecaApp/infraestructure/controllers/cUsuarios.dart';
+import 'package:bibliotecaApp/rutas.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -39,7 +39,7 @@ class _MainDrawerState extends State<MainDrawer> {
       obtenerUsuario(email.toString()).then((user) => {
         print('Usuario' + user.toString()),
         setState(() {
-          currentUser = usuario(user.nombres, user.apellidos, user.fechaNacimiento, user.genero, user.correo, user.urlImage);
+          currentUser = usuario(user.nombres, user.apellidos, user.dni, user.estado, user.correo, user.tipo, user.urlImage);
         }),
       });
     }).then((_) {
@@ -99,8 +99,8 @@ class _MainDrawerState extends State<MainDrawer> {
                 Navigator.pop(context);
               } else {
                 CurrentPage.current = 'cuentas';
-                Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (context) => frmCuentas()));
+                // Navigator.pushReplacement(context,
+                //     MaterialPageRoute(builder: (context) => frmCuentas()));
               }
             },
             title: Text("Cuentas"),

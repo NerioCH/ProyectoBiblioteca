@@ -5,10 +5,10 @@
 // 'flutter create' template.
 
 // The application's name. By default this is also the title of the Flutter window.
-PRODUCT_NAME = controldegastos
+PRODUCT_NAME = bibliotecaApp
 
 // The application's bundle identifier
-PRODUCT_BUNDLE_IDENTIFIER = com.controlgastos.controldegastos
+PRODUCT_BUNDLE_IDENTIFIER = com.controlgastos.bibliotecaApp
 
 // The copyright displayed in application information
 PRODUCT_COPYRIGHT = Copyright © 2023 com.controlgastos. All rights reserved.

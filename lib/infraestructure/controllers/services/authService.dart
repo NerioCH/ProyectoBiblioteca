@@ -1,6 +1,6 @@
 // ignore_for_file: unused_field, file_names
 
-import 'package:controldegastos/domain/entities/authUser.dart';
+import 'package:bibliotecaApp/domain/entities/authUser.dart';
 import 'package:firebase_auth/firebase_auth.dart' as auth;
 
 class AuthService {

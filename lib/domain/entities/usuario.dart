@@ -1,12 +1,13 @@
 class usuario {
   String _nombres = '', _apellidos = '', _urlImage = '';
-  String _fechaNacimiento = '', _genero = '', _correo = '';
+  String _dni = '', _estado = '', _tipo = '', _correo = '';
 
-  usuario(String nombres, String apellidos, String fechaNacimiento, String genero, String correo, String urlImage) {
+  usuario(String nombres, String apellidos, String dni, String estado, String tipo, String correo, String urlImage) {
     _nombres = nombres;
     _apellidos = apellidos;
-    _fechaNacimiento = fechaNacimiento;
-    _genero = genero;
+    _dni = dni;
+    _estado = estado;
+    _tipo = tipo;
     _correo = correo;
     _urlImage =urlImage;
   }
@@ -27,20 +28,28 @@ class usuario {
     _apellidos = apellidos;
   }
 
-  String get fechaNacimiento {
-    return _fechaNacimiento;
+  String get dni {
+    return _dni;
   }
 
-  set fechaNacimiento(String fechaNacimiento) {
-    _fechaNacimiento = fechaNacimiento;
+  set dni(String dni) {
+    _dni = dni;
   }
 
-  String get genero {
-    return _genero;
+  String get estado {
+    return _estado;
   }
 
-  set genero(String genero) {
-    _genero = genero;
+  set estado(String estado) {
+    _estado = estado;
+  }
+
+  String get tipo {
+    return _tipo;
+  }
+
+  set tipo(String tipo) {
+    _tipo = tipo;
   }
 
   String get correo {

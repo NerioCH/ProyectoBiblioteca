@@ -1,9 +1,9 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, camel_case_types
 
-import 'package:controldegastos/aplication/use_cases/forms/frmAddCategoria.dart';
-import 'package:controldegastos/aplication/use_cases/login/login.dart';
-import 'package:controldegastos/mainDrawer.dart';
-import 'package:controldegastos/infraestructure/controllers/cCategorias.dart';
+import 'package:bibliotecaApp/aplication/use_cases/forms/frmAddCategoria.dart';
+import 'package:bibliotecaApp/aplication/use_cases/login/login.dart';
+import 'package:bibliotecaApp/mainDrawer.dart';
+import 'package:bibliotecaApp/infraestructure/controllers/cCategorias.dart';
 import 'package:flutter/material.dart';
 import 'package:popover/popover.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -34,22 +34,29 @@ class _frmCategoriasState extends State<frmCategorias> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Drawer(child: MainDrawer()),
       appBar: AppBar(
         title: Text('Categorias'),
+        backgroundColor: Color.fromARGB(255, 47, 184, 166),
       ),
       body: FutureBuilder(
-        future: getCategoriasTodos(email??''),
+        future: getCategoriasTodos(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             // calcularBalance(snapshot);
             return GridView.count(
-              crossAxisCount: 2,
+              crossAxisCount: 3,
+              crossAxisSpacing: 0,
+              mainAxisSpacing: 0,
               children: List.generate(snapshot.data?.length??0, (index){
                 return Container(
                   child: Padding(
-                    padding: const EdgeInsets.all(18.0),
+                    padding: const EdgeInsets.all(8.0),
                     child: PopupMenuButton<String>(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        constraints: const BoxConstraints.expand(width: 110, height: 60),
+                        color: Colors.red,
                         position: PopupMenuPosition.over,
                         onSelected: (String value) {
                           print(value);
@@ -67,22 +74,29 @@ class _frmCategoriasState extends State<frmCategorias> {
                           PopupMenuItem<String>(
                             value: 'eliminar',
                             child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Icon(Icons.delete, color: Colors.red,),
+                                Icon(Icons.delete, color: Colors.white,size: 16,),
                                 SizedBox(width: 5),
-                                Text('Eliminar'),
+                                Text('Eliminar',style: TextStyle(fontSize: 13,color: Colors.white, fontWeight: FontWeight.bold),),
                               ],
                             ),
                           ),
                         ],
                       child: Card(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
                         elevation: 5,
                         child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Icon(Icons.category, size: 100, color: Colors.blue,),
+                            Icon(Icons.category, size: 50, color: Color.fromARGB(255, 45, 96, 117),),
                             SizedBox(height: 10,),
-                            Text('${snapshot.data?[index]['nombre'].toString().toUpperCase()}', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),),
-                            Text('${snapshot.data?[index]['tipo'].toString()}', style: TextStyle(color: snapshot.data?[index]['tipo'].toString() == 'Ingreso'? Colors.green:Colors.red),),
+                            Text('${snapshot.data?[index]['nombre'].toString().toUpperCase()}', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12, color: Colors.black),),
+                            // Text('${snapshot.data?[index]['tipo'].toString()}', style: TextStyle(color: snapshot.data?[index]['tipo'].toString() == 'Ingreso'? Colors.green:Colors.red),),
                           ],
                         ),
                       ),
@@ -108,6 +122,8 @@ class _frmCategoriasState extends State<frmCategorias> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30.0),
           ),
+          primary: Color.fromARGB(255, 45, 96, 117),
+          minimumSize: Size(50, 50)
         ),
         child: Row(
           mainAxisSize: MainAxisSize.min,

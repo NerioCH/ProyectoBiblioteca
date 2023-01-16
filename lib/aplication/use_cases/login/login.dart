@@ -1,9 +1,9 @@
 // ignore_for_file: prefer_const_constructors, camel_case_types, unused_local_variable
 
-import 'package:controldegastos/aplication/use_cases/forms/frmPrincipal.dart';
-import 'package:controldegastos/aplication/use_cases/login/olvidePassword.dart';
-import 'package:controldegastos/aplication/use_cases/registro/registroUsuarios.dart';
-import 'package:controldegastos/infraestructure/controllers/services/authService.dart';
+import 'package:bibliotecaApp/aplication/use_cases/forms/frmPrincipal.dart';
+import 'package:bibliotecaApp/aplication/use_cases/login/olvidePassword.dart';
+import 'package:bibliotecaApp/aplication/use_cases/registro/registroUsuarios.dart';
+import 'package:bibliotecaApp/infraestructure/controllers/services/authService.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -25,16 +25,16 @@ class _loginState extends State<login> {
   Widget build(BuildContext context) {
     final authService = Provider.of<AuthService>(context);
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white,
       body: Stack(
         children: [
           Container(
-            height: MediaQuery.of(context).size.height * 0.5,
+            height: MediaQuery.of(context).size.height * 0.7,
             decoration: BoxDecoration(
-                color: Colors.blue,
+                color: Colors.indigo,
                 borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(20),
-                  bottomRight: Radius.circular(20),
+                  bottomLeft: Radius.circular(0),
+                  bottomRight: Radius.circular(0),
                 )),
           ),
           SingleChildScrollView(
@@ -64,7 +64,7 @@ class _loginState extends State<login> {
                       width: MediaQuery.of(context).size.height * 0.4,
                       height: MediaQuery.of(context).size.height * 0.8,
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: Colors.indigo[50],
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: Padding(
@@ -78,14 +78,14 @@ class _loginState extends State<login> {
                               borderRadius:
                                   BorderRadius.circular(100), // Image border
                               child: SizedBox.fromSize(
-                                size: Size.fromRadius(70), // Image radius
+                                size: Size.fromRadius(60), // Image radius
                                 child: Image.network(
-                                    'https://i.pinimg.com/736x/ad/db/74/addb74eb115349c4c09e2b2df7a86c82.jpg',
+                                    'https://cdn-icons-png.flaticon.com/512/201/201571.png',
                                     fit: BoxFit.cover),
                               ),
                             ),
                             SizedBox(
-                              height: 45,
+                              height: 25,
                             ),
                             Text(
                               "Inicio de sesion",
@@ -95,32 +95,39 @@ class _loginState extends State<login> {
                                   fontSize: 24),
                             ),
                             SizedBox(
-                              height: 35,
+                              height: 25,
                             ),
                             Form(
                               key: _formkey,
                               child: Column(
                                 children: [
                                   TextFormField(
-                                      validator: (value) {
-                                        if (value!.isEmpty) {
-                                          return 'Ingrese su correo';
-                                        } else {
-                                          return null;
-                                        }
-                                      },
-                                      keyboardType: TextInputType.emailAddress,
-                                      controller: emailcon,
-                                      decoration: InputDecoration(
-                                        hintText: "Correo",
-                                      )),
+                                    validator: (value) {
+                                      if (value!.isEmpty) {
+                                        return 'Ingrese su correo';
+                                      } else {
+                                        return null;
+                                      }
+                                    },
+                                    keyboardType: TextInputType.text,
+                                    controller: emailcon,
+                                    enableInteractiveSelection: false,
+                                    decoration: InputDecoration(
+                                        filled: true,
+                                        fillColor: Colors.white,
+                                        hintText: 'Correo',
+                                        labelText: 'Correo',
+                                        suffix: Icon(Icons.email, color: Colors.indigo),
+                                        border: OutlineInputBorder(
+                                            borderRadius: BorderRadius.circular(15.0))),
+                                  ),
                                   SizedBox(
                                     height: 20,
                                   ),
                                   TextFormField(
                                     validator: (value) {
                                       if (value!.isEmpty) {
-                                        return 'Ingrese su contraseña';
+                                        return 'Ingrese su Contraseña';
                                       } else {
                                         return null;
                                       }
@@ -128,9 +135,15 @@ class _loginState extends State<login> {
                                     obscureText: true,
                                     keyboardType: TextInputType.text,
                                     controller: passwordcon,
+                                    enableInteractiveSelection: false,
                                     decoration: InputDecoration(
-                                      hintText: "Contraseña",
-                                    ),
+                                        filled: true,
+                                        fillColor: Colors.white,
+                                        hintText: 'Contraseña',
+                                        labelText: 'Contraseña',
+                                        suffix: Icon(Icons.key, color: Colors.indigo),
+                                        border: OutlineInputBorder(
+                                            borderRadius: BorderRadius.circular(15.0))),
                                   ),
                                 ],
                               ),

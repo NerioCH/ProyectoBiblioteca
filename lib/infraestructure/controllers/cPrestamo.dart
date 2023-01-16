@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:controldegastos/domain/entities/prestamo.dart';
+import 'package:bibliotecaApp/domain/entities/prestamo.dart';
 
 FirebaseFirestore db = FirebaseFirestore.instance;
 

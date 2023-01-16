@@ -1,9 +1,9 @@
 // ignore_for_file: prefer_const_constructors, unused_local_variable, unnecessary_null_comparison
 
-import 'package:controldegastos/aplication/use_cases/forms/frmPrincipal.dart';
-import 'package:controldegastos/aplication/use_cases/login/login.dart';
-import 'package:controldegastos/infraestructure/controllers/services/authService.dart';
-import 'package:controldegastos/domain/entities/authUser.dart';
+import 'package:bibliotecaApp/aplication/use_cases/forms/frmPrincipal.dart';
+import 'package:bibliotecaApp/aplication/use_cases/login/login.dart';
+import 'package:bibliotecaApp/infraestructure/controllers/services/authService.dart';
+import 'package:bibliotecaApp/domain/entities/authUser.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';

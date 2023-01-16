@@ -1,7 +1,7 @@
 class categoria {
   String _codUsuario = '', _nombre = '', _tipo = '';
 
-  categoria(String codUsuario, String nombre, String tipo) {
+  categoria(String nombre) {
     _codUsuario = codUsuario;
     _nombre = nombre;
     _tipo = tipo;

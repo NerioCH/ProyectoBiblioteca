@@ -1,9 +1,9 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
-import 'package:controldegastos/aplication/use_cases/forms/frmAddPrestamo.dart';
-import 'package:controldegastos/aplication/use_cases/login/login.dart';
-import 'package:controldegastos/mainDrawer.dart';
-import 'package:controldegastos/infraestructure/controllers/cPrestamo.dart';
+import 'package:bibliotecaApp/aplication/use_cases/forms/frmAddPrestamo.dart';
+import 'package:bibliotecaApp/aplication/use_cases/login/login.dart';
+import 'package:bibliotecaApp/mainDrawer.dart';
+import 'package:bibliotecaApp/infraestructure/controllers/cPrestamo.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

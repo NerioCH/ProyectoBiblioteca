@@ -1,10 +1,10 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:controldegastos/aplication/use_cases/forms/frmPrincipal.dart';
-import 'package:controldegastos/aplication/use_cases/login/login.dart';
-import 'package:controldegastos/aplication/use_cases/registro/registroUsuarios.dart';
-import 'package:controldegastos/infraestructure/controllers/services/authService.dart';
-import 'package:controldegastos/rutas.dart';
+import 'package:bibliotecaApp/aplication/use_cases/forms/frmPrincipal.dart';
+import 'package:bibliotecaApp/aplication/use_cases/login/login.dart';
+import 'package:bibliotecaApp/aplication/use_cases/registro/registroUsuarios.dart';
+import 'package:bibliotecaApp/infraestructure/controllers/services/authService.dart';
+import 'package:bibliotecaApp/rutas.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';

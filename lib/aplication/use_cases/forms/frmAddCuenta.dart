@@ -1,8 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:controldegastos/aplication/use_cases/login/login.dart';
-import 'package:controldegastos/domain/entities/cuenta.dart';
-import 'package:controldegastos/infraestructure/controllers/cCuenta.dart';
+import 'package:bibliotecaApp/aplication/use_cases/login/login.dart';
+import 'package:bibliotecaApp/domain/entities/cuenta.dart';
+import 'package:bibliotecaApp/infraestructure/controllers/cCuenta.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

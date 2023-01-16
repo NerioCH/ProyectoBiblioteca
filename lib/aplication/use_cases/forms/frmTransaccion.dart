@@ -1,10 +1,10 @@
 // ignore_for_file: prefer_const_constructors, unused_element
 
-import 'package:controldegastos/aplication/use_cases/forms/frmModalCategorias.dart';
-import 'package:controldegastos/aplication/use_cases/login/login.dart';
-import 'package:controldegastos/domain/entities/transaccion.dart';
-import 'package:controldegastos/infraestructure/controllers/cCuenta.dart';
-import 'package:controldegastos/infraestructure/controllers/cTransaccion.dart';
+import 'package:bibliotecaApp/aplication/use_cases/forms/frmModalCategorias.dart';
+import 'package:bibliotecaApp/aplication/use_cases/login/login.dart';
+import 'package:bibliotecaApp/domain/entities/transaccion.dart';
+import 'package:bibliotecaApp/infraestructure/controllers/cCuenta.dart';
+import 'package:bibliotecaApp/infraestructure/controllers/cTransaccion.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';

@@ -44,39 +44,39 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyChB2B-JgrSG82OobxFc_raqWxplUhk6KE',
-    appId: '1:704220234860:web:9aa18b1623248fef5a4449',
-    messagingSenderId: '704220234860',
-    projectId: 'controldegastosperu',
-    authDomain: 'controldegastosperu.firebaseapp.com',
-    storageBucket: 'controldegastosperu.appspot.com',
+    apiKey: 'AIzaSyD2OPQk1w8JmRKkjJiV-ol6_RYewF39ZjA',
+    appId: '1:546463673476:web:c56c1394aba6c8b4bd66d1',
+    messagingSenderId: '546463673476',
+    projectId: 'appbibliotecaa',
+    authDomain: 'appbibliotecaa.firebaseapp.com',
+    storageBucket: 'appbibliotecaa.appspot.com',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyB7uL1SMfhXn-ljL1RC_Bbwyuqm_jyjehU',
-    appId: '1:704220234860:android:61d41889034661a05a4449',
-    messagingSenderId: '704220234860',
-    projectId: 'controldegastosperu',
-    storageBucket: 'controldegastosperu.appspot.com',
+    apiKey: 'AIzaSyAFfioe1lCP-32A1xBbJrUHFFDnQnXuYls',
+    appId: '1:546463673476:android:6a76a70de44c323ebd66d1',
+    messagingSenderId: '546463673476',
+    projectId: 'appbibliotecaa',
+    storageBucket: 'appbibliotecaa.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyAzqdgz4_upZ0MdToYT7fXf8AJmHYoX1JE',
-    appId: '1:704220234860:ios:e0ba0a5dabb339b45a4449',
-    messagingSenderId: '704220234860',
-    projectId: 'controldegastosperu',
-    storageBucket: 'controldegastosperu.appspot.com',
-    iosClientId: '704220234860-v07a7oa2di1137dikmhma0p816tqe4k3.apps.googleusercontent.com',
-    iosBundleId: 'com.controlgastos.controldegastos',
+    apiKey: 'AIzaSyAdnzo_2qzXNxg4mB_qujoHQNTDXZaY2xM',
+    appId: '1:546463673476:ios:ab1a87de390e4105bd66d1',
+    messagingSenderId: '546463673476',
+    projectId: 'appbibliotecaa',
+    storageBucket: 'appbibliotecaa.appspot.com',
+    iosClientId: '546463673476-ll4gr6oqj942ld0v8jprpu0lo4npf9b6.apps.googleusercontent.com',
+    iosBundleId: 'com.controlgastos.bibliotecaApp',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyAzqdgz4_upZ0MdToYT7fXf8AJmHYoX1JE',
-    appId: '1:704220234860:ios:25d1e4a3f56f849b5a4449',
-    messagingSenderId: '704220234860',
-    projectId: 'controldegastosperu',
-    storageBucket: 'controldegastosperu.appspot.com',
-    iosClientId: '704220234860-t0p77aloica9ev4jhndjlffq3atap03f.apps.googleusercontent.com',
-    iosBundleId: 'com.controlgastos.controldegastos.RunnerTests',
+    apiKey: 'AIzaSyAdnzo_2qzXNxg4mB_qujoHQNTDXZaY2xM',
+    appId: '1:546463673476:ios:94b4a4d8e7ee3f43bd66d1',
+    messagingSenderId: '546463673476',
+    projectId: 'appbibliotecaa',
+    storageBucket: 'appbibliotecaa.appspot.com',
+    iosClientId: '546463673476-6rn6gosg9a1euiuul8t13lea0gpe7gvr.apps.googleusercontent.com',
+    iosBundleId: 'com.controlgastos.bibliotecaApp.RunnerTests',
   );
 }
