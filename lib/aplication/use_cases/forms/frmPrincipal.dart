@@ -114,6 +114,9 @@ class _frmPrincipalState extends State<frmPrincipal> {
                 ),
               ),
             ),
+            SizedBox(height: 10,),  
+            Text('Catálogo de libros', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color.fromARGB(255, 45, 96, 117),),),
+            Divider(height: 5,),
             currentUser?.tipo == 'Administrador'
                 ? menuOpcionesAdmin()
                 : frmListaLibros()
@@ -122,24 +125,5 @@ class _frmPrincipalState extends State<frmPrincipal> {
       ),
       bottomNavigationBar: Menuinferior(),
     );
-  }
-
-  void calcularBalance(snapshot) {
-    totalGeneral = 0;
-    totalIngresos = 0;
-    totalGastos = 0;
-    Future.delayed(Duration.zero, () async {
-      setState(() {
-        for (var i = 0; i < snapshot.data.length; i++) {
-          if (snapshot.data![i]['tipo'].toString() == 'Ingreso') {
-            totalIngresos +=
-                double.parse(snapshot.data![i]['monto'].toString());
-          } else {
-            totalGastos += double.parse(snapshot.data![i]['monto'].toString());
-          }
-        }
-        totalGeneral = totalIngresos - totalGastos;
-      });
-    });
   }
 }

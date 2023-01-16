@@ -58,14 +58,14 @@ class _frmAddLibroState extends State<frmAddLibro> {
         title: Text('Registrar Libro'),
         backgroundColor: Color.fromARGB(255, 47, 184, 166),
       ),
-      body: Form(
-        key: _formkey,
-        child: Padding(
-          padding: const EdgeInsets.all(18.0),
-          child: Column(
-            children: [
-              Flexible(
-                child: TextFormField(
+      body: SingleChildScrollView(
+        child: Form(
+          key: _formkey,
+          child: Padding(
+            padding: const EdgeInsets.all(18.0),
+            child: Column(
+              children: [
+                TextFormField(
                   validator: (value) {
                     if (value!.isEmpty) {
                       return 'Ingrese el titulo';
@@ -80,119 +80,115 @@ class _frmAddLibroState extends State<frmAddLibro> {
                   decoration: InputDecoration(
                       hintText: 'Titulo',
                       labelText: 'Titulo',
-                      suffix: Icon(Icons.title, color: Colors.blue),
+                      suffix: Icon(Icons.title, color: Color.fromARGB(255, 45, 96, 117)),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(15.0))),
                   ),
-              ),
-              SizedBox(height: 20,),
-              DropdownButtonFormField<String>(
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.person_add, color: Colors.blue,)
+                SizedBox(height: 20,),
+                DropdownButtonFormField<String>(
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    prefixIcon: Icon(Icons.person_add, color: Color.fromARGB(255, 47, 184, 166),)
+                  ),
+                  value: autor,
+                  hint: Text('Autor'),
+                  validator: (value) => value == null ? 'Complete el autor' : null, 
+                  items: itemsAutor.map((item) {
+                    return DropdownMenuItem(
+                      value: item,
+                      child: Text(item),
+                    );
+                  }).toList(),
+                  onChanged: (String? newValue) {
+                    setState(() {
+                      autor = newValue!;
+                    });
+                  },
                 ),
-                value: autor,
-                hint: Text('Autor'),
-                validator: (value) => value == null ? 'Complete el autor' : null, 
-                items: itemsAutor.map((item) {
-                  return DropdownMenuItem(
-                    value: item,
-                    child: Text(item),
-                  );
-                }).toList(),
-                onChanged: (String? newValue) {
-                  setState(() {
-                    autor = newValue!;
-                  });
-                },
-              ),
-              SizedBox(height: 20,),
-              DropdownButtonFormField<String>(
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.category, color: Colors.blue,)
+                SizedBox(height: 20,),
+                DropdownButtonFormField<String>(
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    prefixIcon: Icon(Icons.category, color: Color.fromARGB(255, 47, 184, 166),)
+                  ),
+                  value: categoria,
+                  hint: Text('Categoria'),
+                  validator: (value) => value == null ? 'Complete la categoria' : null, 
+                  items: itemsCategoria.map((item) {
+                    return DropdownMenuItem(
+                      value: item,
+                      child: Text(item),
+                    );
+                  }).toList(),
+                  onChanged: (String? newValue) {
+                    setState(() {
+                      categoria = newValue!;
+                    });
+                  },
                 ),
-                value: categoria,
-                hint: Text('Categoria'),
-                validator: (value) => value == null ? 'Complete la categoria' : null, 
-                items: itemsCategoria.map((item) {
-                  return DropdownMenuItem(
-                    value: item,
-                    child: Text(item),
-                  );
-                }).toList(),
-                onChanged: (String? newValue) {
-                  setState(() {
-                    categoria = newValue!;
-                  });
-                },
-              ),
-              SizedBox(height: 20,),
-              Flexible(
-                child: TextFormField(
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return 'Ingrese ISBN';
-                    } else {
-                      return null;
+                SizedBox(height: 20,),
+                TextFormField(
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Ingrese ISBN';
+                      } else {
+                        return null;
+                      }
+                    },
+                    keyboardType: TextInputType.text,
+                    controller: isbn,
+                    enableInteractiveSelection: false,
+                    autofocus: true,
+                    decoration: InputDecoration(
+                        hintText: 'ISBN',
+                        labelText: 'ISBN',
+                        suffix: Icon(Icons.qr_code, color: Color.fromARGB(255, 45, 96, 117)),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15.0))),
+                    ),
+                SizedBox(height: 20,),
+                TextFormField(
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Ingrese la cantidad de copias';
+                      } else {
+                        return null;
+                      }
+                    },
+                    keyboardType: TextInputType.number,
+                    controller: numCopias,
+                    enableInteractiveSelection: false,
+                    autofocus: true,
+                    decoration: InputDecoration(
+                        hintText: 'Numero de copias',
+                        labelText: 'Numero de copias',
+                        suffix: Icon(Icons.book, color: Color.fromARGB(255, 45, 96, 117)),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15.0))),
+                    ),
+                SizedBox(height: 20,),
+                ElevatedButton(
+                  onPressed: () {
+                    if (_formkey.currentState!.validate()) {
+                      addLibro(libro(nombre.text, autor??'Sin Autor', categoria??'Sin categoria', isbn.text, int.parse(numCopias.text), '')).then((value) => {
+                        toastmessage('Guardado correctamente'),
+                        Navigator.pop(context)
+                      }).catchError((err) => print('Error: $err'));
                     }
                   },
-                  keyboardType: TextInputType.text,
-                  controller: isbn,
-                  enableInteractiveSelection: false,
-                  autofocus: true,
-                  decoration: InputDecoration(
-                      hintText: 'ISBN',
-                      labelText: 'ISBN',
-                      suffix: Icon(Icons.qr_code, color: Colors.blue),
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(15.0))),
+                  child: Text('Guardar libro'),
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30.0),
+                    ),
+                    primary: Color.fromARGB(255, 47, 184, 166),
+                    minimumSize: Size(50, 50)
                   ),
-              ),
-              SizedBox(height: 20,),
-              Flexible(
-                child: TextFormField(
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return 'Ingrese la cantidad de copias';
-                    } else {
-                      return null;
-                    }
-                  },
-                  keyboardType: TextInputType.number,
-                  controller: numCopias,
-                  enableInteractiveSelection: false,
-                  autofocus: true,
-                  decoration: InputDecoration(
-                      hintText: 'Numero de copias',
-                      labelText: 'Numero de copias',
-                      suffix: Icon(Icons.book, color: Colors.blue),
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(15.0))),
-                  ),
-              ),
-              SizedBox(height: 20,),
-              ElevatedButton(
-                onPressed: () {
-                  if (_formkey.currentState!.validate()) {
-                    addLibro(libro(nombre.text, autor??'Sin Autor', categoria??'Sin categoria', isbn.text, int.parse(numCopias.text), '')).then((value) => {
-                      toastmessage('Guardado correctamente'),
-                      Navigator.pop(context)
-                    }).catchError((err) => print('Error: $err'));
-                  }
-                },
-                child: Text('Guardar libro'),
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30.0),
-                  ),
-                  primary: Color.fromARGB(255, 47, 184, 166),
-                  minimumSize: Size(50, 50)
-                ),
-              )
-            ],
-          ),
-        )
+                )
+              ],
+            ),
+          )
+        ),
       ),
     );
   }

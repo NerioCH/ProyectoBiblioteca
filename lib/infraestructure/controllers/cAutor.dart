@@ -23,8 +23,8 @@ Future<List<String>> getListaAutoresNombres() async {
   QuerySnapshot querySnapshot = await collectionReference.get();
   querySnapshot.docs.forEach((element) {
     Map l = element.data() as Map;
-    // var nombres = l['nombres'] + ' ' + l['apellidos'];
-    lista.add(l['nombres']);
+    var nombres = l['nombres'] + ' ' + l['apellidos'];
+    lista.add(nombres);
   });
   Future.delayed(const Duration(seconds: 5));
   return lista;
