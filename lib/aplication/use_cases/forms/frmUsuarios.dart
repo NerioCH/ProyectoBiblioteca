@@ -1,19 +1,22 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:bibliotecaApp/aplication/use_cases/forms/frmAddAutor.dart';
+import 'package:bibliotecaApp/aplication/use_cases/registro/registroUsuarios.dart';
 import 'package:bibliotecaApp/mainDrawer.dart';
 import 'package:bibliotecaApp/infraestructure/controllers/cAutor.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class frmAutores extends StatefulWidget {
-  const frmAutores({super.key});
+import '../../../infraestructure/controllers/cUsuarios.dart';
+
+class frmUsuarios extends StatefulWidget {
+  const frmUsuarios({super.key});
 
   @override
-  State<frmAutores> createState() => _frmAutoresState();
+  State<frmUsuarios> createState() => _frmUsuariosState();
 }
 
-class _frmAutoresState extends State<frmAutores> {
+class _frmUsuariosState extends State<frmUsuarios> {
   String? email;
   @override
   void initState() {
@@ -30,7 +33,7 @@ class _frmAutoresState extends State<frmAutores> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Autores'),
+          title: Text('Usuarios'),
           backgroundColor: Color.fromARGB(255, 47, 184, 166),
         ),
         body: Padding(
@@ -39,7 +42,7 @@ class _frmAutoresState extends State<frmAutores> {
             children: [
               Expanded(
                 child: FutureBuilder(
-                    future: getListaAutores(),
+                    future: getListaUsuarios(),
                     builder: (context, snapshot) {
                       if (snapshot.hasData) {
                         return ListView.builder(
@@ -73,7 +76,7 @@ class _frmAutoresState extends State<frmAutores> {
         floatingActionButton: ElevatedButton(
             onPressed: () async {
               await Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => frmAddAutor()));
+                  MaterialPageRoute(builder: (context) => registrarUsuario()));
               setState(() {});
             },
             style: ElevatedButton.styleFrom(

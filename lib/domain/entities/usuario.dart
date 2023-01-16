@@ -2,14 +2,15 @@ class usuario {
   String _nombres = '', _apellidos = '', _urlImage = '';
   String _dni = '', _estado = '', _tipo = '', _correo = '';
 
-  usuario(String nombres, String apellidos, String dni, String estado, String tipo, String correo, String urlImage) {
+  usuario(String nombres, String apellidos, String dni, String estado,
+      String tipo, String correo, String urlImage) {
     _nombres = nombres;
     _apellidos = apellidos;
     _dni = dni;
     _estado = estado;
     _tipo = tipo;
     _correo = correo;
-    _urlImage =urlImage;
+    _urlImage = urlImage;
   }
 
   String get nombres {
